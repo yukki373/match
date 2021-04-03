@@ -8,3 +8,4 @@
 | encrypted_password       | string  | null: false              |
 | name                     | string  | null: false              |
 | gender                   | integer | null: false              |
+| self_introduction        | text    |                          |
