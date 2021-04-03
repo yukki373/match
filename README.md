@@ -9,3 +9,4 @@
 | name                     | string  | null: false              |
 | gender                   | integer | null: false              |
 | self_introduction        | text    |                          |
+| profile_image            | string  |                          |
