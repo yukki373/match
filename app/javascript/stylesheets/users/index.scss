@@ -1,3 +1,13 @@
+.no-user {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &.is-active {
+    display: flex;
+  }
+}
+
 .user-index-page {
   max-width: 480px;
   margin: auto 0;
