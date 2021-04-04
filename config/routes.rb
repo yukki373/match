@@ -3,6 +3,6 @@ Rails.application.routes.draw do
     controllers: { registrations: 'registrations' }
 
   root 'top#index'
-  
-  resources :users, only: [:show]
+
+  resources :users, only: [:show, :index]
 end
