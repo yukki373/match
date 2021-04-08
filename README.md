@@ -1,24 +1,62 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column                   | Type    | Options                  |
+| ------------------------ | ------- | ------------------------ |
+| email                    | string  | unique: true null: false |
+| encrypted_password       | string  | null: false              |
+| name                     | string  | null: false              |
+| gender                   | integer | null: false              |
+| self_introduction        | text    |                          |
+| profile_image            | string  |                          |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :reactions
+- has_many :chat_room_users
+- has_many :chat_rooms, through: :chat_room_users
 
-* Configuration
+## reactions テーブル
 
-* Database creation
+| Column                   | Type       | Options                       |
+| ------------------------ | ---------- | ------------------------------|
+| from_user_id             | references | null: false foreign_key: true |
+| to_user_id               | references | null: false foreign_key: true |
+| status                   | integer    | null: false                   |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
+## chat_room_users テーブル
 
-* Deployment instructions
+| Column                   | Type       | Options                       |
+| ------------------------ | ---------- | ------------------------------|
+| chat_room_id             | references | null: false foreign_key: true |
+| user_id                  | references | null: false foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :user
+- belongs_to :chat_room
+
+## chat_rooms テーブル
+
+| Column                   | Type       | Options                       |
+| ------------------------ | ---------- | ------------------------------|
+|                          | references | null: false foreign_key: true |
+
+### Association
+
+- mas_many :chat_room_users
+
+## chat_messages テーブル
+
+| Column                   | Type       | Options                       |
+| ------------------------ | ---------- | ------------------------------|
+| content	                 | text       |                               |
+| user_id	                 | references | null: false foreign_key: true |
+| chat_room_id             | references | null: false foreign_key: true |
+
+### Association
